@@ -1,6 +1,7 @@
 # Import streamlit
 import streamlit as st
 import pandas as pd
+from pathlib import Path
 
 # Add a header to the app
 st.header("Reservoir Data App")
@@ -24,7 +25,9 @@ def load_data(path):
 
 # Pre-processing the data from CSV file.
 # Correcting names, sorting etc...
-reservoir_df = load_data('data/reservoirs.csv')
+BASE_DIR = Path(__file__).resolve().parent
+data_path = BASE_DIR / "data" / "reservoirs.csv"
+reservoir_df = load_data(data_path)
 
 reservoir_df = reservoir_df.rename(columns={"dato_Id": "date_Id", "omrType": "areaType", "omrnr": "areaNr", "iso_aar": "iso_year",
                                             "iso_uke": "iso_week", "fyllingsgrad": "fill level", "kapasitet_TWh": "capacity_TWh",

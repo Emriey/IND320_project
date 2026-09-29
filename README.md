@@ -5,6 +5,6 @@ Student name: Emre Can Emer
 
 GitHub Repository link: https://github.com/Emriey/IND320_project
 
-StreamLit Share link: https://emriey.streamlit.app/
+StreamLit Share link: https://emriey-ind320-project.streamlit.app/
 
 This is the first part of the project work written for IND320 Data-to-decision class of 2026 Autumn.

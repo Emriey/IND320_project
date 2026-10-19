@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 
 
 # Title and the page layout.
@@ -9,9 +10,9 @@ st.title("Reservoir Data")
 # The code below checks the session_state for cached dataframe.
 # This way I only process the data once, cache it in the home page and use it on the other pages.
 if "processed_data" in st.session_state:
-  df = st.session_state["processed_data"]
+  reservoir_df = st.session_state["processed_data"]
   st.write("Raw data table from the CSV file:")
-  st.dataframe(df)
+  st.dataframe(reservoir_df)
 else:
   st.warning("CSV file could not be found, please return to home page.")
 
@@ -20,8 +21,10 @@ else:
 st.title("Sparkline Viewer")
 
 # Needed to separate the date information so I could use in plotting and sliders etc...
-df_numeric = df.select_dtypes(include=["number"])
-df_first_month = df_numeric.iloc[:30]
+# df_numeric = df.select_dtypes(include=["number"])
+# Separating the numeric and categorical columns into their own lists.
+numeric_columns = reservoir_df.select_dtypes(include=[np.number]).columns.drop(["areaNr", "iso_year", "iso_week"], errors='ignore')
+df_first_month = reservoir_df[numeric_columns].iloc[:30]
 
 # Assignment specifically mentions below:
 # "There should be one row in the table for each column of the imported data."

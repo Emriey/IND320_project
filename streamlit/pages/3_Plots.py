@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-
+import numpy as np
 
 # Title of the page.
 st.header("Data Visualization Dashboard")
@@ -31,21 +31,31 @@ if "df" in locals() and df is not None:
         # Can set the default months below. I picked the first month.
         value=(months[0], months[1]),)
 
-    # The code below just filters the data according to the selected months.
-    filtered_df = df[
-        (df["Month"] >= selected_months[0])
-        & (df["Month"] <= selected_months[1])]
 
     # Setting the drop-down menu.
-    numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
-    column_options = ["All Columns"] + numeric_cols
+    numeric_columns = df.select_dtypes(include=["number"]).columns.drop(["areaNr", "iso_year", "iso_week"], errors='ignore').tolist()
+    column_options = ["All Columns"] + numeric_columns
     selected_column = st.selectbox("Choose a column to plot:", options=column_options)
+
+    areas = sorted(df["areaType"].unique())
+    selected_area = st.selectbox("Choose an area:", options=areas)
+
+    area_numbers = sorted(df["areaNr"].unique())
+    selected_areaNr = st.selectbox("Choose and area number:", options=area_numbers)
+
+    # The code below just filters the data according to the selected months.
+    filtered_df = df[
+    (df["Month"] >= selected_months[0]) &
+    (df["Month"] <= selected_months[1]) &
+    (df["areaType"] == selected_area) & 
+    (df["areaNr"] == selected_areaNr) 
+    ]
 
     # Plotting the data (using date_id for a proper time-series x-axis & the data filtered according to month slider).
     st.subheader(f"Plot for: {selected_column}")
 
     if selected_column == "All Columns":
-        st.line_chart(filtered_df.set_index("date_Id")[numeric_cols])
+        st.line_chart(filtered_df.set_index("date_Id")[numeric_columns])
     else:
         st.line_chart(filtered_df.set_index("date_Id")[selected_column])
 else:

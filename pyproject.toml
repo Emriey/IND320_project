@@ -35,5 +35,7 @@ dependencies = [
     "kaleido",
     "lorem",
     "pymongo",
-    "streamlit"
+    "streamlit",
+    "seaborn",
+    "entsoe-py"
 ]

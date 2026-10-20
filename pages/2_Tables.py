@@ -11,10 +11,11 @@ st.title("Reservoir Data")
 # This way I only process the data once, cache it in the home page and use it on the other pages.
 if "processed_data" in st.session_state:
   reservoir_df = st.session_state["processed_data"]
-  st.write("Raw data table from the CSV file:")
+  st.success("Data successfully loaded.")
+  st.write("Raw data table from the fetched data:")
   st.dataframe(reservoir_df)
 else:
-  st.warning("CSV file could not be found, please return to home page.")
+  st.warning("No data could not be found, please return to home page and check the API connection.")
 
 
 # Main Streamlit execution
@@ -31,7 +32,7 @@ df_first_month = reservoir_df[numeric_columns].iloc[:30]
 # Trasposing it provides this.
 df_transposed = df_first_month.T
 
-# 4. Storing row values as lists.
+# Storing row values as lists.
 df_table = pd.DataFrame({
     "Data Series": df_transposed.index,
     "First Month Trend": df_transposed.values.tolist()

@@ -9,9 +9,9 @@ st.header("Data Visualization Dashboard")
 # This way I only process the data once, cache it in the home page and use it on the other pages.
 if "processed_data" in st.session_state:
   df = st.session_state["processed_data"]
-  st.success("CSV file successfully loaded.")
+  st.success("Data successfully loaded.")
 else:
-  st.warning("Please upload and process a CSV file on Page 1 first.")
+  st.warning("No data could not be found, please return to home page and check the API connection.")
 
 st.subheader("Plot Overview of the data")
 
@@ -38,18 +38,18 @@ if "df" in locals() and df is not None:
     selected_column = st.selectbox("Choose a column to plot:", options=column_options)
 
     areas = sorted(df["areaType"].unique())
-    selected_area = st.selectbox("Choose an area:", options=areas)
+    selected_area = st.radio("Choose an area:", options=areas)
+    st.info("Area number 0 only has data for NO type areas. Please choose another area number for other types.")
 
     area_numbers = sorted(df["areaNr"].unique())
-    selected_areaNr = st.selectbox("Choose and area number:", options=area_numbers)
+    selected_areaNr = st.selectbox("Choose an area number:", options=area_numbers)
 
     # The code below just filters the data according to the selected months.
     filtered_df = df[
     (df["Month"] >= selected_months[0]) &
     (df["Month"] <= selected_months[1]) &
     (df["areaType"] == selected_area) & 
-    (df["areaNr"] == selected_areaNr) 
-    ]
+    (df["areaNr"] == selected_areaNr)]
 
     # Plotting the data (using date_id for a proper time-series x-axis & the data filtered according to month slider).
     st.subheader(f"Plot for: {selected_column}")

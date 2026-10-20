@@ -1,6 +1,7 @@
 # Import streamlit
 import streamlit as st
 import pandas as pd
+import requests
 
 from pathlib import Path
 
@@ -20,15 +21,18 @@ st.write("Slider value:", slider_num)
 # I only pre-process and cache the data here.
 # The other pages just pull the dataframe from a session_state.
 @st.cache_data
-def load_data(path):
-    df = pd.read_csv(path)
+def load_data(url):
+    response = requests.get(url)
+    data = response.json()
+    df = pd.DataFrame(data)
+
     return df
+
 
 # Pre-processing the data from CSV file.
 # Correcting names, sorting etc...
-BASE_DIR = Path(__file__).resolve().parent
-data_path = BASE_DIR / "data" / "reservoirs.csv"
-reservoir_df = load_data(data_path)
+url = "https://biapi.nve.no/magasinstatistikk/api/Magasinstatistikk/HentOffentligData"
+reservoir_df = load_data(url)
 
 reservoir_df = reservoir_df.rename(columns={"dato_Id": "date_Id", "omrType": "areaType", "omrnr": "areaNr", "iso_aar": "iso_year",
                                             "iso_uke": "iso_week", "fyllingsgrad": "fill level", "kapasitet_TWh": "capacity_TWh",

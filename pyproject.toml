@@ -37,5 +37,5 @@ dependencies = [
     "pymongo",
     "streamlit",
     "seaborn",
-    "entsoe-py"
+    "entsoe-py",
 ]

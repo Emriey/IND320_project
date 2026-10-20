@@ -10,14 +10,10 @@ st.set_page_config(
     page_title="Norway Energy Cross-Border Dashboard", layout="wide"
 )
 
-st.title("Norway Cross-Border Energy Flows Dashboard")
-st.write(
-    "Explore historical power transfer data for Norway, curated via Spark"
-    " and hosted on MongoDB Atlas."
-)
+st.title("Norway Cross-Border Energy Transfer Dashboard")
+st.write("In this page you can explore the power import and export between Norway and foreign countries.")
 
-
-# Fetching data from mongoDB. Using the secrets dictionary of the streamlit.
+# Fetching data from mongoDB. Using the secrets setting of the streamlit.
 # Caching all of these so it is downloaded only once.
 @st.cache_resource
 def init_connection():
@@ -57,7 +53,7 @@ else:
   # LEFT COLUMN: Pie Chart
   # ==========================================
   with col_left:
-    st.subheader("Annual Income vs. Output Volume")
+    st.subheader("Annual Import vs. Export")
 
     # Radio button to select connections.
     available_connections = df_all["timeseries_mrid"].unique().tolist()
@@ -106,7 +102,7 @@ else:
   # RIGHT COLUMN: Plots
   # ==========================================
   with col_right:
-    st.subheader("Monthly Line Plot Trends")
+    st.subheader("Monthly Line Plots")
 
     # This is for st.pills as requested in the project.
     all_months = [
@@ -147,13 +143,13 @@ else:
           ax=ax,
           linewidth=1.2,
       )
-      ax.set_title("Cross-Border Power Flows by Selected Months")
+      ax.set_title("Cross-Border Power Transfer by Selected Months")
       ax.set_xlabel("Date")
       ax.set_ylabel("Quantity (MW)")
       plt.xticks(rotation=45)
       st.pyplot(fig)
     else:
-      st.warning("Please select at least one month using the pills above.")
+      st.warning("Please select at least one month above.")
 
 
   # BELOW COLUMNS: Information about data source.
@@ -162,6 +158,5 @@ else:
   with st.expander("Data Source Documentation"):
     st.markdown("""
         - **Data Origin:** Electricity (ENTSO-E) Transparency Platform API.
-        - **Document Type:** Cross-border scheduled commercial exchanges (`A11`).
         - **Pipeline Workflow:** Data was acquired via **Python** and stored in **MongoDB Atlas** for direct dashboard querying.
         """)

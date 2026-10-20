@@ -402,6 +402,21 @@ wheels = [
 ]
 
 [[package]]
+name = "entsoe-py"
+version = "0.8.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "beautifulsoup4" },
+    { name = "pandas" },
+    { name = "pytz" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f3/eb/3d96cdfe7efa1f5d152c3f05730bc378457ea20bf3dbcb3cf1db9b4a2583/entsoe_py-0.8.1.tar.gz", hash = "sha256:4c956fc655f7c0c93941ac8577816bc45a31b42d587772b3efceb3fd705cbf84", size = 1600214, upload-time = "2026-09-04T12:59:25.515Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/22/01/ea300895919ea436ca1e3597abbf0e3d5b1f5e331d4b4e50219c6afc4874/entsoe_py-0.8.1-py3-none-any.whl", hash = "sha256:febd5f7f60a9461a4746e52f4b431a8e8efed8b6e57d93efe16dbeab568bc208", size = 1621609, upload-time = "2026-09-04T12:59:23.837Z" },
+]
+
+[[package]]
 name = "et-xmlfile"
 version = "2.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -576,6 +591,7 @@ dependencies = [
     { name = "anywidget" },
     { name = "cassandra-driver" },
     { name = "datetime" },
+    { name = "entsoe-py" },
     { name = "flask" },
     { name = "hoggorm" },
     { name = "hoggormplot" },
@@ -602,6 +618,7 @@ dependencies = [
     { name = "requests" },
     { name = "river" },
     { name = "scikit-learn" },
+    { name = "seaborn" },
     { name = "setuptools" },
     { name = "sounddevice" },
     { name = "statsmodels" },
@@ -613,6 +630,7 @@ requires-dist = [
     { name = "anywidget" },
     { name = "cassandra-driver" },
     { name = "datetime" },
+    { name = "entsoe-py" },
     { name = "flask" },
     { name = "hoggorm" },
     { name = "hoggormplot" },
@@ -639,6 +657,7 @@ requires-dist = [
     { name = "requests" },
     { name = "river" },
     { name = "scikit-learn" },
+    { name = "seaborn" },
     { name = "setuptools" },
     { name = "sounddevice" },
     { name = "statsmodels" },
@@ -1907,6 +1926,20 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/84/ca/210d4759c7210bb7d269437421959b39a33434e2776b60c5cb8a763bb30a/scipy-1.18.0-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:4a55985d54c769c872e64b7f4c8a81cc30ef700cc04296abbbf3705439c126de", size = 37421717, upload-time = "2026-06-19T15:00:05.102Z" },
     { url = "https://files.pythonhosted.org/packages/2b/54/9a9edb45345bd6744da5ddfb6628e5d5185920494c6a67ec45b6381004cb/scipy-1.18.0-cp312-cp312-win_amd64.whl", hash = "sha256:71ccc8faa2dd16ac310233203474a8b5cb67f10dedd54a3116d34943f4b19132", size = 36597428, upload-time = "2026-06-19T15:00:08.112Z" },
     { url = "https://files.pythonhosted.org/packages/99/0e/33f32a2a58987e26aec0f7df252cbbad1e90ae77bdbc76f40dd4ed0cf0ea/scipy-1.18.0-cp312-cp312-win_arm64.whl", hash = "sha256:d88363fd9d8fbd3511bd273f1a49efb2a540773ddf92a91d57498ce7dd7f3e76", size = 24351481, upload-time = "2026-06-19T15:00:11.103Z" },
+]
+
+[[package]]
+name = "seaborn"
+version = "0.13.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "numpy" },
+    { name = "pandas" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/86/59/a451d7420a77ab0b98f7affa3a1d78a313d2f7281a57afb1a34bae8ab412/seaborn-0.13.2.tar.gz", hash = "sha256:93e60a40988f4d65e9f4885df477e2fdaff6b73a9ded434c1ab356dd57eefff7", size = 1457696, upload-time = "2024-01-25T13:21:52.551Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/83/11/00d3c3dfc25ad54e731d91449895a79e4bf2384dc3ac01809010ba88f6d5/seaborn-0.13.2-py3-none-any.whl", hash = "sha256:636f8336facf092165e27924f223d3c62ca560b1f2bb5dff7ab7fad265361987", size = 294914, upload-time = "2024-01-25T13:21:49.598Z" },
 ]
 
 [[package]]

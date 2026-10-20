@@ -249,6 +249,6 @@ $RECYCLE.BIN/
 
 # Folders
 older_work/
-streamlit/.streamlit/secrets.toml
+.streamlit/secrets.toml
 
 # End of https://www.toptal.com/developers/gitignore/api/python,macos,windows,linux

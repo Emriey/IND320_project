@@ -38,4 +38,10 @@ dependencies = [
     "streamlit",
     "seaborn",
     "entsoe-py",
+    "requests-cache",
+    "retry-requests",
+    "openmeteo-requests",
+    "shapely",
+    "geopandas",
+    "scipy",
 ]

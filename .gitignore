@@ -250,5 +250,7 @@ $RECYCLE.BIN/
 # Folders
 older_work/
 .streamlit/secrets.toml
+notebooks/zone_weather_points.pkl
+notebooks/shape_files
 
 # End of https://www.toptal.com/developers/gitignore/api/python,macos,windows,linux

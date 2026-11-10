@@ -40,7 +40,7 @@ dependencies = [
     "entsoe-py",
     "requests-cache",
     "retry-requests",
-    "openmeteo_requests",
+    "openmeteo-requests",
     "shapely",
     "geopandas",
     "scipy",

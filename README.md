@@ -1,4 +1,4 @@
-# IND320 Project Work [Part-1]
+# IND320 Project Work [Part-3]
 ## Dashboard Basics
 
 Student name: Emre Can Emer
